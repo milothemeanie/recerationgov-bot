@@ -119,9 +119,7 @@ def main():
         WebDriverWait(browser, 5000).until(EC.presence_of_element_located((By.ID, "derp")))
 
     finally:
-        # else quit
         print("Finished")
-        # browser.quit()
 
 
 def find_available_dates(browser, date):
@@ -153,7 +151,7 @@ def navigate_to_date_range(browser, begin_date, end_date):
     end_columns = find_date_buttons(end_date_str, browser)
 
     while len(begin_columns) == 0 or len(end_columns) == 0:
-        # print(str(check_start_label(browser)))
+        print(str(check_start_label(browser)))
 
         next_five = WebDriverWait(browser, 10).until(
             EC.element_to_be_clickable(
