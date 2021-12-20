@@ -12,3 +12,15 @@ At this point the automation is not running and the user will need to take contr
 * Download [chrome webdriver](https://chromedriver.chromium.org/downloads)
   * Match the version of your chrome
   * Unzip and place the exectuable to a location of your choosing
+
+## Configuration
+Currently all configurable properties are located at the top of the script file main.py. Below is the list of all the configurable properies
+
+Config Name | Example | Description
+--- | --- | ---
+WEB_DRIVER_EXEC | C:\Users\Downloads\chromedriver.exe | Absolute path to the location of the chrome web driver 
+USER_NAME | cward | The recreation.gov account's username
+PASSWORD | password1 | The recreation.gov account's password
+CAMP_GROUND_URL | https://www.recreation.gov/camping/campgrounds/233543 | Full url of the desired campsite to book
+START_DATE | 06/08/2022 | Start date of desired booking in *MM/DD/YYYY* format
+END_DATE | 06/12/2022 | End date of desired booking in *MM/DD/YYYY* format
