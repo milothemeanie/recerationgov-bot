@@ -15,7 +15,7 @@ At this point the automation is not running and the user will need to take contr
   * Unzip and place the exectuable to a location of your choosing
 
 ## Configuration
-Currently all configurable properties are located at the top of the script file main.py. Below is the list of all the configurable properies
+Currently all configurable properties are located at the top of the script file [main.py](main.py). Below is the list of all the configurable properies
 
 Config Name | Example | Description
 --- | --- | ---
