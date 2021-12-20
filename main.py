@@ -20,6 +20,7 @@ START_DATE = "06/08/2022"
 # MM/DD/YYYY
 END_DATE = "06/12/2022"
 
+POLL_SPEED_SEC = 1
 
 def main():
     print("Starting recreation.gov bot")
@@ -68,7 +69,7 @@ def main():
                     while len(available_begin_dates) == 0 or len(available_end_dates) == 0:
                         next_five = find_button_with_label("Go Forward 5 Days", browser)
                         browser.execute_script('arguments[0].scrollIntoView();', next_five)
-                        time.sleep(1)
+                        time.sleep(POLL_SPEED_SEC)
                         counter = counter + 1
                         print("Attempt {0}".format(str(counter)))
                         refresh_button = browser.find_element(By.XPATH,
