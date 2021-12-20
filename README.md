@@ -8,9 +8,10 @@ the desired dates are available. If the dates become available then the date box
 At this point the automation is not running and the user will need to take control to finish the booking. 
 
 ## Installation 
+* [Install python](https://www.python.org/downloads) 
 * Download necessary packages ```pip install -r requirements.txt```
 * Download [chrome webdriver](https://chromedriver.chromium.org/downloads)
-  * Match the version of your chrome
+  * Match the version of your chrome that is seen in chrome's Help->About Chrome
   * Unzip and place the exectuable to a location of your choosing
 
 ## Configuration
@@ -25,3 +26,6 @@ CAMP_GROUND_URL | https://www.recreation.gov/camping/campgrounds/233543 | Full u
 START_DATE | 06/08/2022 | Start date of desired booking in *MM/DD/YYYY* format
 END_DATE | 06/12/2022 | End date of desired booking in *MM/DD/YYYY* format
 POLL_SPEED_SEC | .5 | Poll interval in seconds when refresing the availability table
+
+## Run
+```python main.py```
