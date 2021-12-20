@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-WEB_DRIVER_EXEC = "/home/cward/webdrivers/chromedriver_linux64/chromedriver"
+WEB_DRIVER_EXEC = r"C:\Users\cward\dev\web-drivers\chromedriver_win32\chromedriver.exe"
 
 USER_NAME = ""
 PASSWORD = ""
@@ -16,7 +16,7 @@ PASSWORD = ""
 # Originally requested  https://www.recreation.gov/camping/campgrounds/232768
 CAMP_GROUND_URL = "https://www.recreation.gov/camping/campgrounds/232768"
 # MM/DD/YYYY
-START_DATE = "06/08/2022"
+START_DATE = "06/01/2022"
 # MM/DD/YYYY
 END_DATE = "06/12/2022"
 
@@ -124,7 +124,7 @@ def main():
 
 
 def find_available_dates(browser, date):
-    date_abr = date.strftime("%b %-d, %Y")
+    date_abr = date.strftime("%b %#d, %Y")
     date_buttons = browser.find_elements(By.XPATH,
                                          "//button[@class='rec-availability-date' and contains(@aria-label, '{0}')]".format(
                                              date_abr))
@@ -133,7 +133,7 @@ def find_available_dates(browser, date):
 
 
 def find_possible_res_dates(browser, date):
-    date_abr = date.strftime("%b %-d, %Y")
+    date_abr = date.strftime("%b %#d, %Y")
     date_buttons = browser.find_elements(By.XPATH,
                                          "//button[@class='rec-availability-date' and contains(@aria-label, '{0}')]".format(
                                              date_abr))
@@ -142,13 +142,13 @@ def find_possible_res_dates(browser, date):
 
 
 def navigate_to_date_range(browser, begin_date, end_date):
-    next_five = find_button_with_label("Go Forward 5 Days", browser)
+    next_five = browser.find_element(By.XPATH, "//button[@type='button' and @data-testing-hook= 'nextAvailable']")
     browser.execute_script('arguments[0].scrollIntoView();', next_five)
 
-    begin_date_str = begin_date.strftime("%A %B %-d, %Y")
+    begin_date_str = begin_date.strftime("%A %B %#d, %Y")
     begin_columns = find_date_buttons(begin_date_str, browser)
 
-    end_date_str = end_date.strftime("%A %B %-d, %Y")
+    end_date_str = end_date.strftime("%A %B %#d, %Y")
     end_columns = find_date_buttons(end_date_str, browser)
 
     while len(begin_columns) == 0 or len(end_columns) == 0:
@@ -156,7 +156,7 @@ def navigate_to_date_range(browser, begin_date, end_date):
 
         next_five = WebDriverWait(browser, 10).until(
             EC.element_to_be_clickable(
-                (By.XPATH, "//button[@type='button' and @aria-label = 'Go Forward 5 Days']")))
+                (By.XPATH, "//button[@type='button' and @data-testing-hook= 'nextAvailable']")))
 
         next_five.click()
         begin_columns = find_date_buttons(begin_date_str, browser)
