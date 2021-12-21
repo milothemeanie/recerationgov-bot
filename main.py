@@ -85,10 +85,7 @@ def main():
                     matches = list()
                     for b_date in available_begin_dates:
                         for e_date in available_end_dates:
-                            b_acc_name = str(b_date.accessible_name)[b_date.accessible_name.index("-"):]
-                            e_acc_name = str(e_date.accessible_name)[e_date.accessible_name.index("-"):]
-
-                            if b_acc_name == e_acc_name:
+                            if int(b_date.rect["y"]) == int(e_date.rect["y"]):
                                 matches.append((b_date, e_date))
                                 available_end_dates.remove(e_date)
                                 break
@@ -100,7 +97,7 @@ def main():
                         browser.execute_script('arguments[0].scrollIntoView();', match[0])
 
                         match[0].click()
-                        match[1].click()
+                        find_available_dates(browser, end_date)[0].click()
 
                         browser.execute_script(
                             "document.getElementsByClassName('rec-campground-availability-book-now')["
