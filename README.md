@@ -18,7 +18,7 @@ At this point the automation is not running and the user will need to take contr
 Currently all configurable properties are located at the top of the script file [main.py](main.py). Below is the list of all the configurable properties
 
 Config Name | Example | Description
---- | --- | ---
+--- | -- | ---
 WEB_DRIVER_EXEC | C:\Users\Downloads\chromedriver.exe | Absolute path to the location of the chrome web driver 
 USER_NAME | cward | The recreation.gov account's username
 PASSWORD | password1 | The recreation.gov account's password
@@ -26,6 +26,7 @@ CAMP_GROUND_URL | https://www.recreation.gov/camping/campgrounds/233543 | Full u
 START_DATE | 06/08/2022 | Start date of desired booking in *MM/DD/YYYY* format
 END_DATE | 06/12/2022 | End date of desired booking in *MM/DD/YYYY* format
 POLL_SPEED_SEC | .5 | Poll interval in seconds when refresing the availability table
+TIME_ADD_CART | 7:00 | Wait until this time has passed before clicking add to cart
 
 ## Run
 ```python main.py```

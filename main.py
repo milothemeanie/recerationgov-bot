@@ -1,4 +1,6 @@
+import datetime
 import time
+import pause
 
 from dateutil import parser
 from selenium import webdriver
@@ -16,9 +18,12 @@ PASSWORD = ""
 # Originally requested  https://www.recreation.gov/camping/campgrounds/232768
 CAMP_GROUND_URL = "https://www.recreation.gov/camping/campgrounds/232768"
 # MM/DD/YYYY
-START_DATE = "06/22/2022"
+START_DATE = "06/21/2022"
 # MM/DD/YYYY
 END_DATE = "06/27/2022"
+
+#24 Hour time
+TIME_ADD_CART = "07:27"
 
 POLL_SPEED_SEC = 1
 
@@ -109,6 +114,13 @@ def main():
 
                         browser.execute_script('arguments[0].scrollIntoView(false);', cart_button)
 
+                        if TIME_ADD_CART != "":
+                            ready_time = TIME_ADD_CART.split(":")
+
+                            now = datetime.datetime.now()
+                            pause.until(
+                                datetime.datetime(now.year, now.month, now.day, int(ready_time[0]), int(ready_time[1])))
+
                         actions = ActionChains(browser)
                         actions.move_to_element(cart_button).click().perform()
 
@@ -136,7 +148,8 @@ def find_possible_res_dates(browser, date):
                                          "//button[@class='rec-availability-date' and contains(@aria-label, '{0}')]".format(
                                              date_abr))
 
-    return [x for x in date_buttons if (x.text == 'NR' or x.text == 'A') and not not ('PAVILION' or 'SHELTE') in str(x.accessible_name)]
+    return [x for x in date_buttons if
+            (x.text == 'NR' or x.text == 'A') and not ('PAVILION' or 'SHELTE') in str(x.accessible_name)]
 
 
 def navigate_to_date_range(browser, begin_date, end_date):
