@@ -16,11 +16,12 @@ PASSWORD = ""
 # Originally requested  https://www.recreation.gov/camping/campgrounds/232768
 CAMP_GROUND_URL = "https://www.recreation.gov/camping/campgrounds/232768"
 # MM/DD/YYYY
-START_DATE = "06/01/2022"
+START_DATE = "06/22/2022"
 # MM/DD/YYYY
-END_DATE = "06/12/2022"
+END_DATE = "06/27/2022"
 
 POLL_SPEED_SEC = 1
+
 
 def main():
     print("Starting recreation.gov bot")
@@ -126,7 +127,7 @@ def find_available_dates(browser, date):
                                          "//button[@class='rec-availability-date' and contains(@aria-label, '{0}')]".format(
                                              date_abr))
 
-    return [x for x in date_buttons if x.text == 'A' and not 'PAVILION' in str(x.accessible_name)]
+    return [x for x in date_buttons if x.text == 'A' and not ('PAVILION' or 'SHELTE') in str(x.accessible_name)]
 
 
 def find_possible_res_dates(browser, date):
@@ -135,7 +136,7 @@ def find_possible_res_dates(browser, date):
                                          "//button[@class='rec-availability-date' and contains(@aria-label, '{0}')]".format(
                                              date_abr))
 
-    return [x for x in date_buttons if (x.text == 'NR' or x.text == 'A') and not 'PAVILION' in str(x.accessible_name)]
+    return [x for x in date_buttons if (x.text == 'NR' or x.text == 'A') and not not ('PAVILION' or 'SHELTE') in str(x.accessible_name)]
 
 
 def navigate_to_date_range(browser, begin_date, end_date):
