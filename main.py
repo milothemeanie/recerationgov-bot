@@ -22,8 +22,8 @@ START_DATE = "06/21/2022"
 # MM/DD/YYYY
 END_DATE = "06/27/2022"
 
-#24 Hour time
-TIME_ADD_CART = "07:27"
+#24 Hour time HH:MM:SS:mmmmmm
+TIME_ADD_CART = "07:00:00:000000"
 
 POLL_SPEED_SEC = 1
 
@@ -119,7 +119,7 @@ def main():
 
                             now = datetime.datetime.now()
                             pause.until(
-                                datetime.datetime(now.year, now.month, now.day, int(ready_time[0]), int(ready_time[1])))
+                                datetime.datetime(now.year, now.month, now.day,int(ready_time[0]), int(ready_time[1]), int(ready_time[2]), int(ready_time[3])))
 
                         actions = ActionChains(browser)
                         actions.move_to_element(cart_button).click().perform()
