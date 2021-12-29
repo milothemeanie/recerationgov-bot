@@ -26,7 +26,7 @@ CAMP_GROUND_URL | https://www.recreation.gov/camping/campgrounds/233543 | Full u
 START_DATE | 06/08/2022 | Start date of desired booking in *MM/DD/YYYY* format
 END_DATE | 06/12/2022 | End date of desired booking in *MM/DD/YYYY* format
 POLL_SPEED_SEC | .5 | Poll interval in seconds when refresing the availability table
-TIME_ADD_CART | 7:00 | Wait until this time before clicking add to cart. In 24 hour format
+TIME_ADD_CART | 7:00:00:000000 | Wait until this time before clicking add to cart. In 24 hour format
 
 ## Run
 ```python main.py```
